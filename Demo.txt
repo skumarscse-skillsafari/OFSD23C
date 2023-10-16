@@ -1,0 +1,10 @@
+What is GitHub?
+GitHub is a web interface where you store your Git repositories and track and manage your changes effectively. It gives access to the code to various developers working on the same project. You can make your own changes to a project at the same time as other developers are making theirs.
+
+If you accidentally mess up some code in your project while making changes, you can easily go back to the previous stage where the mess has not occurred yet.
+
+Why use GitHub
+There are so many reasons you should learn and use GitHub. Let's look at a few of them now.
+
+Effective Project Management
+GitHub is a place where your Git repositories are stored. GitHub makes it easy for developers working on the same project but in different locations to be on the same page.

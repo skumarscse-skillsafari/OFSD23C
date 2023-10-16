@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="Description" content="JS - DOM - Attribute" />
+    <title>JS - DOM - Attribute</title>
+    <style>
+      .head-three {
+        height: 25px;
+        width: 100px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 2px solid black;
+        background: green;
+        border-radius: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2 class="head attribute" id="special">JS - DOM - Attribute</h2>
+    <p class="head">
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente,
+      nesciunt.
+    </p>
+
+    <h3>Defining Attributes</h3>
+    <button id="btn">Demo</button>
+    <script>
+      // JS - DOM - Attribute
+      /*
+       let h2 = {
+        className: "head",
+        id: "special",
+        textContent: "JS - DOM - Attribute"
+       }
+      */
+      //   const h2 = document.getElementsByClassName("head");
+      //   console.log(h2[0]);
+      //   console.log(h2[1].textContent);
+      //   h2[1].textContent = "Updated content";
+
+      // Attribute
+      // Add => setAttribute("key", "value")
+      // Get => getAttribute("key")
+      // Check => hasAttribute("key")
+      // Remove => removeAttribute("key")
+
+      const h3 = document.querySelector("h3");
+      console.log(h3);
+      h3.setAttribute("class", "head-three");
+      console.log(h3.getAttribute("class"));
+      console.log(h3.hasAttribute("class"));
+      //   h3.removeAttribute("class");
+
+      document.querySelector("#btn").setAttribute("disabled", "");
+    </script>
+  </body>
+</html>
