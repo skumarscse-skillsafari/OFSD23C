@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="Description" content="Handling Form Elements" />
+    <title>Handling Form Elements</title>
+  </head>
+  <body>
+    <!-- <h2 onclick="displayMessage(event)" id="head" class="head-class">
+      Handling Form Elements
+    </h2> -->
+
+    <h2 id="head" class="head-class">Handling Form Elements</h2>
+
+    <form action="#" id="userForm">
+      <p>
+        <input type="text" name="username" placeholder="Enter name" />
+      </p>
+      <p>
+        <input type="email" name="email" placeholder="Enter email" />
+      </p>
+      <p>
+        <input type="password" name="password" placeholder="Enter password" />
+      </p>
+      <p>
+        <input type="submit" value="Submit" id="submit-btn" />
+        <input type="reset" value="Clear" />
+      </p>
+    </form>
+    <hr />
+    <button id="add-btn">Add</button>
+    <button id="remove-btn">Remove</button>
+
+    <script>
+      // Handling Form Elements
+      // name => "John"
+      // email => john@skillsafari.in
+      // password => 123456
+
+      // Accessing form
+      // 1. document.forms => HTMLCollection of Forms
+      // 2. let form = document.querySelector("#formID") => Form section
+      // form.elements[index / name / id]
+
+      // button => click
+      // formID => submit
+
+      // Handling form using "click" event
+      const userForm = document.querySelector("#userForm");
+      //   console.log(userForm);
+      const username = userForm.elements[0];
+      //   console.log(username);
+      const email = userForm.elements[1];
+      const password = userForm.elements[2];
+      const submitBtn = userForm.elements[3];
+      //   console.log(submitBtn);
+      submitBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        // console.log(username.value);
+        // console.log(email.value);
+        // console.log(password.value);
+        if (
+          username.value === "" ||
+          email.value === "" ||
+          password.value === ""
+        ) {
+          alert("All fields are mandatory");
+        } else {
+          const userInfo = {
+            username: username.value,
+            email: email.value,
+            password: password.value,
+          };
+          console.log(userInfo);
+        }
+      });
+
+      //   function displayMessage(event) {
+      //     // alert("Element h2 clicked");
+      //     console.log(event.target.className);
+      //   }
+
+      //   const h2 = document.getElementById("head");
+      //   console.log(h2);
+      //   h2.onclick = function (event) {
+      //     console.log(event);
+      //     console.log(this.id);
+      //   };
+
+      const addBtn = document.querySelector("#add-btn");
+      const removeBtn = document.querySelector("#remove-btn");
+      console.log(addBtn);
+      console.log(removeBtn);
+
+      addBtn.addEventListener("click", addEvent);
+      function addEvent() {
+        console.log("Event Added");
+      }
+
+      removeBtn.addEventListener("click", function () {
+        addBtn.removeEventListener("click", addEvent);
+      });
+    </script>
+  </body>
+</html>
