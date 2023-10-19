@@ -55,7 +55,8 @@
       const password = userForm.elements[2];
       const submitBtn = userForm.elements[3];
       //   console.log(submitBtn);
-      submitBtn.addEventListener("click", (e) => {
+      // submitBtn.addEventListener("click", (e) => {
+      userForm.addEventListener("submit", (e) => {
         e.preventDefault();
         // console.log(username.value);
         // console.log(email.value);

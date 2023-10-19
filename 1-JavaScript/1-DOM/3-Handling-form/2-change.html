@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="Description" content="Change Event" />
+    <title>Change Event</title>
+  </head>
+  <body>
+    <h2>Change Event</h2>
+    <form action="#" id="userForm">
+      <p>
+        <input type="text" name="username" id="username" />
+      </p>
+      <p id="result"></p>
+    </form>
+
+    <script>
+      // Change Event
+      const username = document.querySelector("#username");
+      const result = document.querySelector("#result");
+      username.addEventListener("change", () => {
+        // console.log(username.value);
+        result.textContent = username.value;
+      });
+    </script>
+  </body>
+</html>
