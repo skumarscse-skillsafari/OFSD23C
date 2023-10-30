@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="Description" content="Select Element - Multiple" />
+    <title>Select Element - Multiple</title>
+  </head>
+  <body>
+    <h2>Select Element - Multiple</h2>
+    <form action="#">
+      <p>Select any subject(s)</p>
+      <select name="subjects" id="subjects" multiple>
+        <option value="English">English</option>
+        <option value="Maths">Maths</option>
+        <option value="Physics">Physics</option>
+        <option value="Chemistry">Chemistry</option>
+        <option value="Computer">Computer</option>
+      </select>
+    </form>
+    <p>
+      <button id="btn">Select</button>
+    </p>
+    <hr />
+    <p id="result"></p>
+
+    <script>
+      // Select Element
+      let subjectsSelect = document.querySelector("#subjects");
+      console.log(subjectsSelect.options);
+
+      let btn = document.querySelector("#btn");
+      let result = document.querySelector("#result");
+      let selectedSubjects = [];
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        let subjectsSelect = document.querySelector("#subjects");
+        console.log(subjectsSelect.options);
+        for (const subject of subjectsSelect.options) {
+          if (subject.selected) {
+            console.log(subject.value);
+            selectedSubjects.push(subject.value);
+          }
+        }
+        console.log(selectedSubjects);
+        result.textContent =
+          selectedSubjects.length > 0
+            ? `User selected: ${selectedSubjects.join(", ")}`
+            : "User not selected any option";
+        selectedSubjects = [];
+      });
+    </script>
+  </body>
+</html>
