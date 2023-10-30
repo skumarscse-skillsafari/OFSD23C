@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="Description" content="Input Event" />
+    <title>Input Event</title>
+  </head>
+  <body>
+    <h2>Input Event</h2>
+    <p>Type Something...</p>
+    <input
+      type="text"
+      name="something"
+      id="something"
+      placeholder="Enter something"
+    />
+    <hr />
+    <p id="result"></p>
+
+    <script>
+      // Input Event
+      let something = document.querySelector("#something");
+      let result = document.querySelector("#result");
+      something.addEventListener("input", function () {
+        result.textContent = this.value;
+      });
+    </script>
+  </body>
+</html>

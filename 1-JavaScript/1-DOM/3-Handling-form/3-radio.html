@@ -38,23 +38,43 @@
 
     <script>
       // Handling radio button
-      const subjects = document.querySelectorAll("[name='subject']");
+      // const subjects = document.querySelectorAll("[name='subject']");
+      // const btn = document.querySelector("#btn");
+      // const result = document.querySelector("#result");
+      // console.log(subjects);
+      // btn.addEventListener("click", (e) => {
+      //   e.preventDefault();
+      //   let selectedOption;
+      //   for (const subject of subjects) {
+      //     if (subject.checked) {
+      //       // console.log(subject.value);
+      //       selectedOption = subject.value;
+      //     }
+      //   }
+      //   result.textContent = selectedOption
+      //     ? `User selected ${selectedOption}`
+      //     : "User not selected any option.";
+      // });
+
       const btn = document.querySelector("#btn");
       const result = document.querySelector("#result");
-      // console.log(subjects);
       btn.addEventListener("click", (e) => {
         e.preventDefault();
-        let selectedOption;
-        for (const subject of subjects) {
-          if (subject.checked) {
-            // console.log(subject.value);
-            selectedOption = subject.value;
-          }
-        }
-        result.textContent = selectedOption
-          ? `User selected ${selectedOption}`
-          : "User not seleccted any option.";
+        const subjects = document.querySelectorAll("[name='subject']:checked");
+        console.log(subjects);
+        result.textContent = subjects[0]?.value
+          ? `User selected: ${subjects[0]?.value}`
+          : "User not selected any option.";
       });
+
+      let userDetails = {
+        address: {
+          city: "Chennai",
+          pincode: 600018,
+          state: "Tamilnadu",
+        },
+      };
+      // console.log(userDetails.address.street?.floorno);
     </script>
   </body>
 </html>

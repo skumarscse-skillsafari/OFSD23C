@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="Description" content="Checkbox" />
+    <title>Checkbox</title>
+  </head>
+  <body>
+    <h2>Checkbox</h2>
+    <form action="#">
+      <p>Select Subject(s)</p>
+      <input
+        type="checkbox"
+        name="english"
+        id="english"
+        value="English"
+      />English
+      <input type="checkbox" name="maths" id="maths" value="Maths" />Maths
+      <input
+        type="checkbox"
+        name="physics"
+        id="physics"
+        value="Physics"
+      />Physics
+      <input
+        type="checkbox"
+        name="chemistry"
+        id="chemistry"
+        value="Chemistry"
+      />Chemistry
+      <input
+        type="checkbox"
+        name="computer"
+        id="computer"
+        value="Computer"
+      />Computer
+    </form>
+    <p>
+      <button id="btn">Submit</button>
+    </p>
+
+    <hr />
+    <p id="result"></p>
+
+    <script>
+      // Checkbox
+      let optionsCheckBx = document.querySelectorAll("[type='checkbox']");
+      let btn = document.querySelector("#btn");
+      let result = document.querySelector("#result");
+      let selectedArrVal = [];
+      for (const optionch of optionsCheckBx) {
+        optionch.addEventListener("change", () => {
+          let selectedOptions = document.querySelectorAll(
+            "[type='checkbox']:checked"
+          );
+          console.log(selectedOptions);
+          let selectedArr = Array.from(selectedOptions);
+          //   console.log(selectedArr);
+          selectedArrVal = selectedArr.map((s) => s.value);
+          //   console.log(selectedArrVal);
+        });
+      }
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        console.log(selectedArrVal);
+        result.textContent =
+          selectedArrVal.length > 0
+            ? `User selected: ${selectedArrVal.join(", ")}`
+            : "User not selected any option(s)";
+      });
+    </script>
+  </body>
+</html>
