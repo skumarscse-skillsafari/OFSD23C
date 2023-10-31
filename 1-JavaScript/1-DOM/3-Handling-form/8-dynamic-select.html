@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="Description" content="Dynamic Select" />
+    <title>Dynamic Select</title>
+  </head>
+  <body>
+    <h2>Dynamic Select</h2>
+    <p>Add Subject</p>
+    <p>
+      <input
+        type="text"
+        name="subject"
+        id="subject"
+        placeholder="Enter subject name"
+      />
+    </p>
+    <p><button id="addBtn">Add subject</button></p>
+    <hr />
+    <p>List of the subjects</p>
+    <p>
+      <select name="subjects" id="subjects" multiple></select>
+    </p>
+    <p>
+      <button id="removeBtn">Remove subject</button>
+    </p>
+
+    <script>
+      // Dynamic Select
+      //   const allOptions = document.querySelector("#subjects").options;
+      //   console.log(allOptions.remove(1));
+      //   let newOption = new Option("Physics", "Physics");
+      //   console.log(newOption);
+
+      let subjectText = document.querySelector("#subject");
+      let addBtn = document.querySelector("#addBtn");
+      let selectSubjects = document.querySelector("#subjects");
+      let removeBtn = document.querySelector("#removeBtn");
+      //   console.log(selectSubjects.options);
+      addBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        if (subjectText.value === "") {
+          alert("Enter any subject name");
+        } else {
+          let newOption = new Option(subjectText.value, subjectText.value);
+          console.log(newOption);
+          //   selectSubjects.append(newOption);
+          selectSubjects.options.add(newOption, undefined);
+          subjectText.value = "";
+          subjectText.focus();
+        }
+      });
+
+      removeBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        let selectedSubjects = [];
+        for (const subjectOption of selectSubjects.options) {
+          //   console.log(subjectOption);
+          selectedSubjects.push(subjectOption.selected);
+        }
+        // console.log(selectedSubjects);
+
+        let index = selectSubjects.options.length;
+        console.log(index);
+        while (index--) {
+          if (selectedSubjects[index]) {
+            selectSubjects.options.remove(index);
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
