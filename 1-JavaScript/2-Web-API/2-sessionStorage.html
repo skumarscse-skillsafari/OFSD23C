@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="Description" content="sessionStorage" />
+    <title>sessionStorage</title>
+  </head>
+  <body>
+    <h2>sessionStorage</h2>
+
+    <script>
+      // SessionStorage
+
+      // Accessing sessionStorage
+      // window.sessionStorage
+      // sessionStorage
+
+      //   console.log(window.sessionStorage);
+      //   console.log(sessionStorage);
+
+      // Add item
+      //   sessionStorage.setItem("name", "John");
+      //   sessionStorage.setItem("age", 23);
+      //   sessionStorage.setItem("city", "Chennai");
+
+      // Update
+      //   sessionStorage.setItem("city", "Bangalore");
+
+      // Remove
+      //   sessionStorage.removeItem("age");
+
+      // clear
+      //   sessionStorage.clear();
+
+      // Objects in sessionStorage
+      let userDetails = {
+        name: "John",
+        age: 30,
+        isAdmin: true,
+        city: "Chennai",
+      };
+
+      sessionStorage.setItem("userDetails", JSON.stringify(userDetails));
+
+      console.log(JSON.parse(localStorage.getItem("userDetails")));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="Description" content="Web API" />
+    <title>Web API</title>
+  </head>
+  <body>
+    <h2>Web API</h2>
+
+    <script>
+      // Web API
+      // localStorage
+      // sessionStorage
+      // Geolocation API
+      // Fetch API
+
+      // localStorage
+      // Web API => Store some set of data in our browser as key: value pair
+      // www.google.com => key: value pair
+      // www.skillsafari.in => key: value pair
+
+      // Endpoint
+      // www.skillsafari.in/about => key: value pair
+      // www.skillsafari.in/courses => key: value pair
+
+      // Access localStorage
+      // window.localStorage
+      // localStorage
+      //   console.log(localStorage);
+      //   console.log(window.localStorage);
+
+      // Methods of localStorage
+      // CRUD => Create, Read, Update, Delete
+      // setItem("key", "value") => Used to add key, value pair in to the localStorage
+      // setItem("existingKey", "newValue")
+      // getItem("key") => Access the "value" based on the "key"
+      // removeItem("key") => Remove the "value" based on the "key"
+      // clear() => Remove all the key: value pairs from the localStorage
+      // length => Count of key: value pairs in the localStorage
+
+      // Accessing localStorage
+      console.log(localStorage);
+
+      // Add a date in to localStorage
+      // localStorage.setItem("key", "value")
+
+      // Adding new key: value pair
+      // localStorage.setItem("username", "John");
+      // localStorage.setItem("age", 30);
+      // localStorage.setItem("isAdmin", true);
+      // console.log(localStorage.length);
+
+      // Update existing key's value
+      // localStorage.setItem("existingKey", "newValue")
+      // localStorage.setItem("age", 23);
+
+      // Delete
+      // localStorage.removeItem("existingKey")
+      // localStorage.removeItem("isAdmin");
+
+      // clear()
+      // localStorage.clear();
+
+      // Storing Object as values
+      let userDetails = {
+        name: "John",
+        age: 30,
+        isAdmin: true,
+        city: "Chennai",
+      };
+      localStorage.setItem("userDetails", JSON.stringify(userDetails));
+      console.log(localStorage.getItem("userDetails"));
+
+      console.log(JSON.parse(localStorage.getItem("userDetails")));
+
+      // localStorage to Map
+      console.log(Object.keys(userDetails));
+      console.log(Object.values(userDetails));
+      console.log(Object.entries(userDetails));
+    </script>
+  </body>
+</html>
