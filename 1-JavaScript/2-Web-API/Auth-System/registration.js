@@ -29,9 +29,23 @@ signupBtn.addEventListener("click", (e) => {
         password: password.value,
         confirmPassword: confirmPassword.value,
       };
-      localStorage.setItem(userDetails.id, JSON.stringify(userDetails));
-      alert("User added successfully");
-      window.location.href = "./index.html";
+      let storedUsers = Object.values(localStorage);
+      // console.log(storedUsers);
+      let storedUsersObj = storedUsers.map((user) => JSON.parse(user));
+      console.log(storedUsersObj);
+      let findData = storedUsersObj.find(
+        (user) =>
+          user.username === userDetails.username ||
+          user.email === userDetails.email
+      );
+      console.log(findData);
+      if (findData) {
+        alert("User already exists");
+      } else {
+        localStorage.setItem(userDetails.id, JSON.stringify(userDetails));
+        alert("User added successfully");
+        window.location.href = "./index.html";
+      }
     }
   }
 });
