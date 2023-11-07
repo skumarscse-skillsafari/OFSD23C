@@ -8,9 +8,34 @@
   </head>
   <body>
     <h2>Geolocation API</h2>
+    <p>Know your current location</p>
+    <button id="btn">Click</button>
+    <hr />
+    <p id="result"></p>
 
     <script>
       // Geolocation API
+      // Accessing Geolocation API
+      const btn = document.querySelector("#btn");
+      const result = document.querySelector("#result");
+
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        const onSuccess = (position) => {
+          //   console.log(position.coords);
+          const { latitude, longitude } = position.coords;
+          //   console.log(latitude, longitude);
+          result.textContent = `The current coordinates: Latitude: ${latitude} and Longitude: ${longitude}`;
+        };
+
+        const onError = () => {
+          //   console.log("Error");
+          result.textContent = "Enable location";
+        };
+
+        navigator.geolocation.getCurrentPosition(onSuccess, onError);
+      });
     </script>
   </body>
 </html>
