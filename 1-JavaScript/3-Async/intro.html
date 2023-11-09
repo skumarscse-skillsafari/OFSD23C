@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="Description" content="Async" />
+    <title>Async</title>
+  </head>
+  <body>
+    <h2>Handling Async operation</h2>
+    <div id="products-container"></div>
+
+    <script>
+      // Handling Async operation
+      // Sync Vs. Async
+      // Sync => one by one
+      // Async => in parallel
+      // JS => Single threaded Async
+      // 1. Callbacks
+      // 2. Async/Await
+      // 3. Promises - initial, pending, fulfilled or rejected
+
+      // fetch API
+      // fetch("url")
+      // Async/Await
+      //   const result = fetch("https://fakestoreapi.com/products");
+      //   console.log(result);
+
+      //   try {
+      // logic
+      //   } catch (error) {
+      // error
+      //   }
+
+      const fetchProducts = async (url) => {
+        try {
+          const res = await fetch(url);
+          const data = await res.json();
+          // console.log(data);
+          const productsContainer = document.querySelector(
+            "#products-container"
+          );
+          const productsArr = data.map((product) => {
+            return `
+                <div class="product-${product.id}">
+                    <h2>${product.title}</h2>
+                    <p>${product.description}</p>
+                    <p>
+                        <img src=${product.image} alt=product-${product.id} height="150px" width="150px" />    
+                    </p>
+                    <hr />
+                </div>
+                `;
+          });
+          console.log(productsArr.join(" "));
+          productsContainer.innerHTML = productsArr.join("");
+        } catch (error) {
+          console.log(error);
+        }
+      };
+
+      fetchProducts("https://fakestoreapi.com/products");
+    </script>
+  </body>
+</html>
