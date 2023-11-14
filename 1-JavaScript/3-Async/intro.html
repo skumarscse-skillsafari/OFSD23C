@@ -8,6 +8,14 @@
   </head>
   <body>
     <h2>Handling Async operation</h2>
+    <form action="#">
+      <p>
+        <input type="text" name="search" id="search" placeholder="Search..." />
+      </p>
+      <p><input type="submit" value="Search" id="search-btn" /></p>
+      <p><input type="submit" value="Ascending" id="asc" /></p>
+      <p><input type="submit" value="Descending" id="dec" /></p>
+    </form>
     <div id="products-container"></div>
 
     <script>
@@ -31,11 +39,13 @@
       //   } catch (error) {
       // error
       //   }
+      let copyArr = [];
 
       const fetchProducts = async (url) => {
         try {
           const res = await fetch(url);
           const data = await res.json();
+          copyArr = data;
           // console.log(data);
           const productsContainer = document.querySelector(
             "#products-container"
@@ -43,6 +53,7 @@
           const productsArr = data.map((product) => {
             return `
                 <div class="product-${product.id}">
+                    <h2>Product Number: ${product.id}</h2>
                     <h2>${product.title}</h2>
                     <p>${product.description}</p>
                     <p>
@@ -52,7 +63,7 @@
                 </div>
                 `;
           });
-          console.log(productsArr.join(" "));
+          // console.log(productsArr.join(" "));
           productsContainer.innerHTML = productsArr.join("");
         } catch (error) {
           console.log(error);
@@ -60,6 +71,37 @@
       };
 
       fetchProducts("https://fakestoreapi.com/products");
+
+      const searchVal = document.querySelector("#search");
+      const searchBtn = document.querySelector("#search-btn");
+      searchVal.addEventListener("input", (e) => {
+        e.preventDefault();
+        console.log(copyArr);
+        const newArr = copyArr.filter((product) => {
+          if (
+            product.title.toLowerCase().includes(searchVal.value.toLowerCase())
+          ) {
+            return product;
+          }
+        });
+        // console.log(newArr);
+        const productsContainer = document.querySelector("#products-container");
+        const productsArr = newArr.map((product) => {
+          return `
+                <div class="product-${product.id}">
+                    <h2>Product Number: ${product.id}</h2>
+                    <h2>${product.title}</h2>
+                    <p>${product.description}</p>
+                    <p>
+                        <img src=${product.image} alt=product-${product.id} height="150px" width="150px" />    
+                    </p>
+                    <hr />
+                </div>
+                `;
+        });
+        // console.log(productsArr.join(" "));
+        productsContainer.innerHTML = productsArr.join("");
+      });
     </script>
   </body>
 </html>

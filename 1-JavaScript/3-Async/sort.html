@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="Description" content="Sort - Demo" />
+    <title>Sort - Demo</title>
+  </head>
+  <body>
+    <h2>Sort - Demo</h2>
+
+    <script>
+      // Sort - Demo
+      const fruits = ["apple", "orange", "mango", "banana"];
+      console.log(fruits.sort());
+      console.log([1, 3, 10, 20, 0, 12, 3].sort());
+      let sortedArr = [1, 3, 10, 20, 0, 12, 3].sort((a, b) => {
+        return b - a;
+      });
+      console.log(sortedArr);
+    </script>
+  </body>
+</html>
