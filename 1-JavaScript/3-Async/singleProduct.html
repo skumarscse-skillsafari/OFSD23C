@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="Description" content="Single Product Page" />
+    <title>Single Product Page</title>
+  </head>
+  <body>
+    <h2>Single Product Page</h2>
+    <div id="product-container"></div>
+
+    <script>
+      async function fetchData(url) {
+        let res = await fetch(url);
+        let data = await res.json();
+        let UrlId = new URLSearchParams(location.search);
+        let paramId = UrlId.get("id");
+        let findProduct = data?.find((prod) => prod?.id === +paramId);
+        console.log(findProduct);
+        const productContainer = document.querySelector("#product-container");
+        const productDiv = `
+                <div class="product-${findProduct.id}">
+                    <h2>Product Number: ${findProduct.id}</h2>
+                    <h2>${findProduct.title}</h2>
+                    <p>${findProduct.description}</p>
+                    <p>
+                        <img src=${findProduct.image} alt=product-${findProduct.id} height="150px" width="150px" />    
+                    </p>
+                    <a href='/1-JavaScript/3-Async/intro.html'>Back to home page</a> 
+                    <hr />
+                </div>
+        `;
+        productContainer.innerHTML = productDiv;
+      }
+      fetchData("https://fakestoreapi.com/products");
+    </script>
+  </body>
+</html>
