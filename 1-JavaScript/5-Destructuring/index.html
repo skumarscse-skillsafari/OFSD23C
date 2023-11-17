@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="Description" content="Destructuring" />
+    <title>Destructuring</title>
+  </head>
+  <body>
+    <h2>Destructuring</h2>
+
+    <script>
+      // Destructuring => Unpacking elements ans properties of array and objects
+
+      // Array
+      // Syntax
+      // let [var-1, var-2,..., var-N] = [ele-1, ele-2,..., ele-N]
+      //   let fruits = ["apple", "orange", "mango", "banana"];
+      //   console.log(fruits);
+      //   console.log(fruits[1]);
+      //   let [fruitOne, fruitTwo, fruitThree, fruitFour] = fruits; // ["apple", "orange", "mango", "banana"]
+      //   console.log(fruitTwo);
+
+      //   let [a, b, c] = "ABC";
+      //   console.log(a);
+      //   console.log(b);
+      //   console.log(c);
+
+      //   let str = "SkillSafari EduKeys";
+      //   let [nameOne, nameTwo] = str.split(" "); // ["SkillSafari", "EduKeys"]
+      //   console.log(nameOne);
+      //   console.log(nameTwo);
+
+      // Skipping array element
+      //   let fruits = ["apple", "orange", "mango", "banana"];
+      //   let [fruitOne, , , fruitFour] = fruits;
+      //   console.log(fruitOne);
+      //   //   console.log(fruitThree);
+      //   console.log(fruitFour);
+
+      // rest variable
+      //   let [one, two, three, four, five, ...rest] = [
+      //     1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+      //   ];
+      //   console.log(one);
+      //   console.log(two);
+      //   console.log(three);
+      //   console.log(four);
+      //   console.log(five);
+      //   console.log(rest);
+
+      //   function assignNumber([one, two, three, four, five, ...rest]) {
+      //     console.log(one);
+      //     console.log(two);
+      //     console.log(three);
+      //     console.log(four);
+      //     console.log(five);
+      //     console.log(rest);
+      //     let [six, seven, eight, nine, ten] = rest;
+      //     console.log(six);
+      //     console.log(seven);
+      //     console.log(eight);
+      //     console.log(nine);
+      //     console.log(ten);
+      //   }
+      //   assignNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+
+      //   let a = 10;
+      //   let b = 20;
+      //   [b, a] = [a, b];
+      //   console.log(a);
+      //   console.log(b);
+
+      // Object
+      // Syntax
+      // let {propName-1, propName-2,..., propName-N} = {
+      //                                    propName-1: propVal-1,
+      //                                    propName-2: propVal-2,...,
+      //                                    propName-N: propVal-N }
+
+      //   let userDetails = {
+      //     name: "John",
+      //     age: 23,
+      //     isAdmin: true,
+      //     city: "Chennai",
+      //   };
+      //   let { city, name, age, isAdmin } = userDetails;
+      //   console.log(name);
+      //   console.log(age);
+      //   console.log(isAdmin);
+      //   console.log(city);
+
+      // Alias name
+      //   let { city: c, name: n, age: a, isAdmin: i } = userDetails;
+      //   console.log(n);
+      //   console.log(a);
+      //   console.log(i);
+      //   console.log(c);
+      //   let { city, name, ...rest } = userDetails;
+      //   console.log(city);
+      //   console.log(name);
+      //   console.log(rest);
+
+      //   let userDetails = {
+      //     name: "John",
+      //     age: 23,
+      //     isAdmin: true,
+      //     address: {
+      //       city: "Chennai",
+      //       state: "Tamilnadu",
+      //       pincode: 600018,
+      //     },
+      //   };
+
+      //   let {
+      //     name,
+      //     age,
+      //     isAdmin,
+      //     address: { city, state, pincode },
+      //   } = userDetails;
+      //   console.log(city);
+      //   console.log(state);
+      //   console.log(pincode);
+      //   console.log(userDetails.address);
+
+      let userDetails = {
+        name: "John",
+        age: 23,
+        isAdmin: true,
+        city: "Chennai",
+      };
+
+      // Object.keys() => []
+      // Object.values() => []
+      // Object.entries() => [[], []]
+      // for...of
+      //   console.log(Object.entries(userDetails)); // ["name", "age", "isAdmin", city"]
+      //   for (const [key, value] of Object.entries(userDetails)) {
+      //     console.log(key, value);
+      //   }
+
+      // Map to Object => Object.fromEntries()
+      // Object to Map => Object.entries()
+      console.log("Input:", userDetails);
+      console.log(Object.entries(userDetails));
+      let res = Object.entries(userDetails).map((ele) => {
+        // ["age", 23]
+        if (ele[0] === "age") {
+          return [ele[0], ele[1] * 2];
+        } else {
+          return ele;
+        }
+      });
+      console.log("Output:", Object.fromEntries(res));
+    </script>
+  </body>
+</html>

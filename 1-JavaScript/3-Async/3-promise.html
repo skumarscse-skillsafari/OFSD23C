@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="Description" content="Promise" />
+    <title>Promise</title>
+  </head>
+  <body>
+    <h2>Promise</h2>
+
+    <script>
+      // Promise
+      // 1. pending => initial stage
+      // 2. fulfiled => try {...} => then()
+      // 3. rejected => catch(e) {...} => catch(e) {...}
+
+      //   async function fetchData() {
+      //     try {
+      //       let res = await fetch("https://fakestoreapi.com/products");
+      //       let data = await res.json();
+      //       console.log(data);
+      //     } catch (error) {
+      //       console.log(error);
+      //     }
+      //   }
+
+      //   fetchData();
+
+      //   new Promise((res, rej) => {
+      //     console.log(res);
+      //     console.log(rej);
+      //   });
+
+      fetch("https://fakestoreapi.com/products")
+        .then((res) => res.json())
+        .then((data) => console.log(data))
+        .catch((e) => console.log(e));
+    </script>
+  </body>
+</html>
