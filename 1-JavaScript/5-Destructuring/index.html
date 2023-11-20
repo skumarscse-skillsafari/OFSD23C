@@ -123,12 +123,12 @@
       //   console.log(pincode);
       //   console.log(userDetails.address);
 
-      let userDetails = {
-        name: "John",
-        age: 23,
-        isAdmin: true,
-        city: "Chennai",
-      };
+      // let userDetails = {
+      //   name: "John",
+      //   age: 23,
+      //   isAdmin: true,
+      //   city: "Chennai",
+      // };
 
       // Object.keys() => []
       // Object.values() => []
@@ -141,17 +141,27 @@
 
       // Map to Object => Object.fromEntries()
       // Object to Map => Object.entries()
-      console.log("Input:", userDetails);
-      console.log(Object.entries(userDetails));
-      let res = Object.entries(userDetails).map((ele) => {
-        // ["age", 23]
-        if (ele[0] === "age") {
-          return [ele[0], ele[1] * 2];
-        } else {
-          return ele;
-        }
-      });
-      console.log("Output:", Object.fromEntries(res));
+      // console.log("Input:", userDetails);
+      // console.log(Object.entries(userDetails));
+      // let res = Object.entries(userDetails).map((ele) => {
+      //   // ["age", 23]
+      //   if (ele[0] === "age") {
+      //     return [ele[0], ele[1] * 2];
+      //   } else {
+      //     return ele;
+      //   }
+      // });
+      // console.log("Output:", Object.fromEntries(res));
+
+      // rest parameter
+      // function displayNumbers(a, b, c, ...d) {
+      //   console.log(a);
+      //   console.log(b);
+      //   console.log(c);
+      //   console.log(d.map((num) => num * 2));
+      // }
+
+      // displayNumbers(1, 2, 3, 4, 5, 6);
     </script>
   </body>
 </html>
