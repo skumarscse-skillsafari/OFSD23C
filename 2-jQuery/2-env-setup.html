@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="Description" content="Env - Setup - jQuery" />
+    <title>Env - Setup - jQuery</title>
+    <style>
+      #para {
+        height: 50px;
+        width: 150px;
+        background-color: green;
+        color: white;
+        padding: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Env - Setup - jQuery</h2>
+    <div id="container">
+      <p>Lorem ipsum dolor sit amet.</p>
+      <p id="para"><strong>Lorem ipsum dolor sit amet.</strong></p>
+      <p>Lorem ipsum dolor sit amet.</p>
+      <h2>Head - 2</h2>
+      <p>Lorem ipsum dolor sit amet.</p>
+      <h3>Head - 3</h3>
+      <p>Lorem ipsum dolor sit amet.</p>
+    </div>
+    <button id="show">Show</button>
+    <button id="hide">Hide</button>
+    <button id="fade">Click</button>
+
+    <!-- jQuery CDN -->
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Internal JS -->
+    <script>
+      // jQuery => window.jQuery === jQuery === $
+
+      // $("selector").action()
+      //   const para = document.querySelectorAll("p");
+      //   console.log(para);
+
+      $("document").ready(function () {
+        console.log($("p"));
+        console.log($("#para"));
+
+        console.log($("#container > p"));
+
+        $("#hide").click(function (event) {
+          console.log(event);
+          $("#para").hide(2000);
+        });
+
+        $("#show").click(function () {
+          $("#para").show(1000);
+        });
+
+        // fade and slide
+
+        $("#fade").click(function () {
+          $("#para").slideToggle(2000, function () {
+            alert("FadeToggle Completed");
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
