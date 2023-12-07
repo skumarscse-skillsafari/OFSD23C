@@ -36,7 +36,7 @@ function addToCart(id) {
 
   let findIndex = cartStorage.findIndex((product) => product.id === id);
   console.log(findIndex);
-  if (findIndex == -1) {
+  if (findIndex === -1) {
     cartStorage.push({
       id: findProduct.id,
       title: findProduct.title,
@@ -54,5 +54,6 @@ function addToCart(id) {
     console.log(productToUpdate);
     cartStorage.splice(findIndex, 1, productToUpdate);
     localStorage.setItem("cart", JSON.stringify(cartStorage));
+    alert("Product added successfully");
   }
 }
