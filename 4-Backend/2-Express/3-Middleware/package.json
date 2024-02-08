@@ -1,0 +1,23 @@
+{
+  "name": "3-middleware",
+  "version": "1.0.0",
+  "description": "Express Middleware",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "express",
+    "middleware"
+  ],
+  "author": "SkillSafari",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.3"
+  }
+}

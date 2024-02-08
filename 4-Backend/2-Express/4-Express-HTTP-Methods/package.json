@@ -1,0 +1,30 @@
+{
+  "name": "4-express-http-methods",
+  "version": "1.0.0",
+  "description": "Express HTTP Methods",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "express",
+    "http",
+    "methods",
+    "get",
+    "post",
+    "put",
+    "patch",
+    "delete"
+  ],
+  "author": "SkillSafari",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.3"
+  }
+}
