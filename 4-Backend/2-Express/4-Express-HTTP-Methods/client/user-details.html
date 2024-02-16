@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Details</title>
+  </head>
+  <body>
+    <h2>User Details</h2>
+    <div id="details"></div>
+    <script>
+      async function getUser() {
+        try {
+          let urlParams = new URLSearchParams(location.search);
+          console.log(urlParams.get("id"));
+          let id = urlParams.get("id");
+          let res = await fetch(`http://localhost:5000/api/v1/user/${id}`);
+          let data = await res.json();
+          console.log(data.data);
+          const detailsEle = document.querySelector("#details");
+          const detailsBlock = `
+                    <h2>User name: ${data.data.name}</h2>
+                    <p>User id: ${data.data._id}</p>
+                    <p>User Age: ${data.data.age}</p>
+                    <p>User isAdmin?: ${data.data.isAdmin}</p>
+                    <a href=/users.html>Back to users page</a>
+          `;
+          detailsEle.innerHTML = detailsBlock;
+        } catch (error) {
+          console.log(error);
+        }
+      }
+
+      getUser();
+    </script>
+  </body>
+</html>
