@@ -6,9 +6,11 @@ import {
   updatePostById,
   deletePostById,
 } from "../controllers/postController.js";
+import auth from "./auth.js";
+
 const router = express.Router();
 
-router.post("/", createPost);
+router.post("/", auth, createPost);
 
 router.get("/", getAllPosts);
 

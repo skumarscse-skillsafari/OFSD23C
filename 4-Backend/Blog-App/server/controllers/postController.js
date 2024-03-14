@@ -5,7 +5,7 @@ export const createPost = async (req, res) => {
     await Post.create({
       ...req.body,
       author: id,
-      tags: req.body.tags.split(","),
+      tags: req.body.tags.split(",").map((tag) => tag.trim()),
     });
     res
       .status(201)

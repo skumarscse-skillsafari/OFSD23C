@@ -1,18 +1,32 @@
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const NavComp = () => {
+  const navigate = useNavigate();
   return (
     <div>
-      <Navbar bg="dark" data-bs-theme="dark">
+      <Navbar bg="secondary" data-bs-theme="secondary">
         <Container>
-          <Navbar.Brand href="/">BLOG APP</Navbar.Brand>
-          <Nav className="me-auto">
+          <Link to="/" className="btn btn-secondary">
+            BLOG APP
+          </Link>
+          <Nav>
             <Link to="/" className="btn btn-secondary me-5">
               Posts
             </Link>
+
+            <div
+              className="btn btn-secondary me-5"
+              onClick={() => {
+                localStorage.getItem("token")
+                  ? navigate("/create", { replace: true })
+                  : alert("User must loggedin to create post");
+              }}
+            >
+              Create Post
+            </div>
 
             <Link to="/signin" className="btn btn-secondary me-5">
               Sign In

@@ -22,11 +22,15 @@ const SignIn = () => {
     e.preventDefault();
     await axios
       .post("http://localhost:5000/api/v1/users/signin", user)
-      .then((res) => console.log(res.data))
+      .then((res) => {
+        alert(res.data.message);
+        localStorage.setItem("token", res.data.token);
+      })
       .catch((error) => console.log(error.response.data));
   };
   return (
     <div className="container mt-5">
+      <h2 className="display-3 text-center">Sign In Page</h2>
       <Form>
         <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
           <Form.Label>Email address</Form.Label>

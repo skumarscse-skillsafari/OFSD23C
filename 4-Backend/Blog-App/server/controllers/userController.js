@@ -1,5 +1,10 @@
 import bcrypt from "bcrypt";
 import User from "../models/userModel.js";
+import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
+dotenv.config();
+const SECRET = process.env.SECRET;
+
 export const signup = async (req, res) => {
   try {
     const { username, email, password, confirmPassword } = req.body;
@@ -32,7 +37,7 @@ export const signin = async (req, res) => {
   try {
     const { email, password } = req.body;
     const findUser = await User.findOne({ email: email });
-    console.log(findUser);
+    // console.log(findUser);
     if (!findUser)
       return res
         .status(400)
@@ -42,10 +47,18 @@ export const signin = async (req, res) => {
       return res
         .status(400)
         .json({ success: false, message: "Invalid credentials" });
-
+    const token = jwt.sign(
+      { email: findUser.email, id: findUser._id },
+      SECRET,
+      { expiresIn: "1hr" }
+    );
     res
       .status(200)
-      .json({ success: true, message: "User Logged in successfully" });
+      .json({
+        success: true,
+        message: "User Logged in successfully",
+        token: token,
+      });
   } catch (error) {
     res.status(400).json({ success: false, message: error });
   }

@@ -24,11 +24,12 @@ const SignUp = () => {
     e.preventDefault();
     await axios
       .post("http://localhost:5000/api/v1/users/create", user)
-      .then((res) => console.log(res.data))
+      .then((res) => alert(res.data.message))
       .catch((error) => console.log(error.response.data));
   };
   return (
     <div className="container mt-5">
+      <h2 className="display-3 text-center">Signup Page</h2>
       <Form>
         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
           <Form.Label>Username</Form.Label>
