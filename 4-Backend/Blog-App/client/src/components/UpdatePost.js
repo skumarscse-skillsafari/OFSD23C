@@ -1,17 +1,25 @@
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import FileBase64 from "react-file-base64";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
-const CreatePost = () => {
+const UpdatePost = () => {
   const navigate = useNavigate();
+  const { postId } = useParams();
   const [post, setPost] = useState({
     title: "",
     description: "",
     image: "",
     tags: "",
   });
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:5000/api/v1/posts/${postId}`)
+      .then((res) => setPost(res.data.data))
+      .catch((error) => console.log(error));
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -26,15 +34,20 @@ const CreatePost = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const token = localStorage.getItem("token");
+    if (!token) return alert("User must loggedin to update the post");
     const jwt = JSON.parse(atob(token.split(".")[1]));
     // console.log(jwt);
     const id = jwt.id;
     axios
-      .post(`http://localhost:5000/api/v1/posts?id=${id}`, post, {
-        headers: {
-          "x-access-token": token,
-        },
-      })
+      .put(
+        `http://localhost:5000/api/v1/posts/${postId}`,
+        { ...post, author: id },
+        {
+          headers: {
+            "x-access-token": token,
+          },
+        }
+      )
       .then((res) => {
         alert(res.data.message);
         navigate("/", { replace: true });
@@ -43,7 +56,7 @@ const CreatePost = () => {
   };
   return (
     <div className="container mt-5">
-      <h2 className="display-3 text-center">Create Post</h2>
+      <h2 className="display-3 text-center">Update Post</h2>
       <Form>
         <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
           <Form.Label>Title</Form.Label>
@@ -99,7 +112,7 @@ const CreatePost = () => {
 
         <Form.Group>
           <Button variant="primary" onClick={handleSubmit}>
-            Create Post
+            Update Post
           </Button>{" "}
           <Button variant="secondary">Cancel</Button>{" "}
         </Form.Group>
@@ -108,4 +121,4 @@ const CreatePost = () => {
   );
 };
 
-export default CreatePost;
+export default UpdatePost;

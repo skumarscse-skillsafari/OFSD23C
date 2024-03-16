@@ -18,7 +18,7 @@ export const createPost = async (req, res) => {
 export const getPostById = async (req, res) => {
   try {
     const { id } = req.params;
-    const findPost = await Post.findById(id);
+    const findPost = await Post.findById(id).populate("author");
     if (!findPost)
       return res
         .status(400)
@@ -52,12 +52,16 @@ export const updatePostById = async (req, res) => {
           title: req.body.title,
           description: req.body.description,
           image: req.body.image,
-          tags: req.body.tags.split(","),
+          tags: req.body.tags.split(",").map((tag) => tag.trim()),
         },
       },
       { new: true }
     );
-    res.status(200).json({ success: true, data: updatedPost });
+    res.status(200).json({
+      success: true,
+      data: updatedPost,
+      message: "Post updated successfully",
+    });
   } catch (error) {
     res.status(404).json({ success: false, message: error });
   }

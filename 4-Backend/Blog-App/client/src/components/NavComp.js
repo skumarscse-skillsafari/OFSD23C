@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 const NavComp = () => {
   const navigate = useNavigate();
+  const token = localStorage.getItem("token");
   return (
     <div>
       <Navbar bg="secondary" data-bs-theme="secondary">
@@ -28,13 +29,21 @@ const NavComp = () => {
               Create Post
             </div>
 
-            <Link to="/signin" className="btn btn-secondary me-5">
-              Sign In
-            </Link>
+            {token ? (
+              <Link to="/profile" className="btn btn-secondary">
+                Profile
+              </Link>
+            ) : (
+              <>
+                <Link to="/signin" className="btn btn-secondary me-5">
+                  Sign In
+                </Link>
 
-            <Link to="/signup" className="btn btn-secondary">
-              Sign Up
-            </Link>
+                <Link to="/signup" className="btn btn-secondary">
+                  Sign Up
+                </Link>
+              </>
+            )}
           </Nav>
         </Container>
       </Navbar>

@@ -1,8 +1,10 @@
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 const SignIn = () => {
+  const navigate = useNavigate();
   const [user, setUser] = useState({
     email: "",
     password: "",
@@ -25,6 +27,7 @@ const SignIn = () => {
       .then((res) => {
         alert(res.data.message);
         localStorage.setItem("token", res.data.token);
+        navigate("/", { replace: true });
       })
       .catch((error) => console.log(error.response.data));
   };
